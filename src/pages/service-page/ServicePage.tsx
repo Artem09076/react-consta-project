@@ -5,15 +5,15 @@ import {urlApi} from "../../const.ts";
 
 const ServicePage = () => {
 
-    const URLNews = urlApi + 'services'
+    const URLServices = urlApi + 'services'
 
     const [servicesState, setServices] = useState([]);
     useEffect(() => {
-        axios.get(URLNews).then((response) => {
+        axios.get(URLServices).then((response) => {
             const mainList = response.data;
             setServices(mainList);
         });
-    }, [setServices]);
+    }, [setServices, URLServices]);
     return (
         <div>
             <ServicesList data={servicesState}/>
