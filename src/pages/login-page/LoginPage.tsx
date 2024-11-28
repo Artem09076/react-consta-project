@@ -4,12 +4,15 @@ import './LoginPage.css'
 import {Text} from "@consta/uikit/Text";
 import {TextField} from "@consta/uikit/TextField";
 import {Button} from "@consta/uikit/Button";
+import {useDispatch} from "react-redux";
+import {login} from "../../store/user-store/UserSlice.tsx";
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const validEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +25,7 @@ const LoginPage = () => {
     }
 
     const handleSubmit = () => {
+
         if (!email || !password) {
             setError("Все поля должны быть заполнены");
             return;
@@ -37,7 +41,10 @@ const LoginPage = () => {
             return;
         }
 
-        localStorage.setItem('isAuthenticated', 'true');
+        dispatch(login({
+            email: email,
+            password: password,
+        }));
         navigate('/');
     }
 

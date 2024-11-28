@@ -3,6 +3,7 @@ const AppPage = {
     services: '/services',
     detail: '/services/:id',
     login: '/login',
+    userinfo: 'user/:id'
 
 };
 
