@@ -1,15 +1,31 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 type UserState = {
-    email: string | null;
-    password: string | null;
+    username: string ;
+    password: string;
     isAuthenticated: boolean;
+    accessToken: string;
+    refreshToken: string;
+    id: number | null;
+    email: string;
+    firstName: string;
+    lastName: string;
+    gender: string;
+    image: string;
 }
 
 const initialState: UserState = {
-    email: null,
-    password: null,
+    username: '',
+    password:  '',
     isAuthenticated: false,
+    accessToken: '',
+    refreshToken: '',
+    id: null,
+    email: '',
+    firstName: '',
+    lastName: '',
+    gender: '',
+    image: ''
 }
 
 const UserSplice = createSlice({
@@ -17,8 +33,16 @@ const UserSplice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            state.email = action.payload.email;
+            state.username = action.payload.username;
             state.password = action.payload.password;
+            state.accessToken = action.payload.accessToken;
+            state.id = action.payload.id;
+            state.email = action.payload.email;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
+            state.gender = action.payload.gender;
+            state.image = action.payload.image;
+            state.refreshToken = action.payload.refreshToken;
             state.isAuthenticated = true;
         }
     }

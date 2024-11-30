@@ -11,12 +11,17 @@ import MainPage from "./pages/main-page/MainPage.tsx";
 import LoginPage from "./pages/login-page/LoginPage.tsx";
 import {Provider, useSelector} from "react-redux";
 import userStore, {RootState} from "./store/user-store/UserStore.tsx";
+import UserPage from "./pages/user-page/UserPage.tsx";
 
 
-const PrivateRoute = ({ children } : {children: JSX.Element}) => {
+const PrivateNoAuthRoute = ({ children } : {children: JSX.Element}) => {
     const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
     return isAuthenticated ? children : <Navigate to={AppPage.login} replace={true}/>;
 }
+
+const PrivateAuthRoute = ({ children } : {children: JSX.Element}) => {
+    const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
+    return !isAuthenticated ? children : <Navigate to={AppPage.main} replace={true}/>;}
 
 const App = function() {
     return (
@@ -26,9 +31,10 @@ const App = function() {
                 <Routes>
                     <Route path={AppPage.main} element={<MainLayout/>} >
                         <Route index element={<MainPage/>}></Route>
-                        <Route path={AppPage.services} element={<PrivateRoute><ServicePage></ServicePage></PrivateRoute>}></Route>
-                        <Route path={AppPage.detail} element={<PrivateRoute><ServiceDetailPage/></PrivateRoute>}></Route>
-                        <Route path={AppPage.login} element={<LoginPage/>}></Route>
+                        <Route path={AppPage.services} element={<PrivateNoAuthRoute><ServicePage></ServicePage></PrivateNoAuthRoute>}></Route>
+                        <Route path={AppPage.detail} element={<PrivateNoAuthRoute><ServiceDetailPage/></PrivateNoAuthRoute>}></Route>
+                        <Route path={AppPage.login} element={<PrivateAuthRoute><LoginPage/></PrivateAuthRoute>}></Route>
+                        <Route path={AppPage.userinfo + ':id'} element={<PrivateNoAuthRoute><UserPage></UserPage></PrivateNoAuthRoute>}></Route>
                     </Route>
                     <Route path='*' element={<Responses404/>}></Route>
                 </Routes>
