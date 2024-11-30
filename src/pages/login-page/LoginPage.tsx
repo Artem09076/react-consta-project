@@ -6,47 +6,65 @@ import {TextField} from "@consta/uikit/TextField";
 import {Button} from "@consta/uikit/Button";
 import {useDispatch} from "react-redux";
 import {login} from "../../store/user-store/UserSlice.tsx";
+import axios from "axios";
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const validEmail = (email: string) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+
+
+
+    const validData = async (username: string, password: string) => {
+
+        const expiresInMins = 60 * 24
+
+
+            const response = await axios.post('https://dummyjson.com/auth/login',
+                {
+                    username,
+                    password,
+                    expiresInMins,
+                },
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                }
+            );
+            return response.data; // Успешный результат
+
     }
 
-    const validPassword = (password: string) => {
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-        return passwordRegex.test(password);
-    }
+    const handleSubmit = async () => {
+        setError('');
 
-    const handleSubmit = () => {
-
-        if (!email || !password) {
+        if (!username || !password) {
             setError("Все поля должны быть заполнены");
             return;
         }
 
-        if (!validEmail(email)) {
-            setError('Введите корректный e-mail');
-            return;
-        }
 
-        if (!validPassword(password)) {
-            setError('Введите корректный пароль');
-            return;
-        }
+        try {
+            // Проверка данных на сервере
+            const userData = await validData(username, password);
 
-        dispatch(login({
-            email: email,
-            password: password,
-        }));
-        navigate('/');
-    }
+            // Если успешно, диспатчим данные пользователя
+            dispatch(login({
+                ...userData,
+            }));
+
+            // Редирект на главную страницу
+            navigate('/');
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+            console.log(err.message);
+            setError('Неверный логин или пароль');
+            }
+        }
+    };
+
 
 
 
@@ -58,10 +76,10 @@ const LoginPage = () => {
 
             <div className='login-form'>
                 <TextField
-                label='Логин (e-mail)'
-                value={email}
-                onChange={(e) => setEmail(e || '')}
-                placeholder='Введите ваш email'
+                label='Имя пользователя'
+                value={username}
+                onChange={(e) => setUsername(e || '')}
+                placeholder='Введите ваше имя пользователя'
                 />
                 <TextField
                 label='Пароль'

@@ -1,0 +1,46 @@
+/* styles.css */
+
+
+.container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-block {
+    background-color: #c6f6d5; /* Светло-зеленый */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.info-block p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.user-photo {
+    background-color: #fed7d7; /* Светло-розовый */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.user-photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
