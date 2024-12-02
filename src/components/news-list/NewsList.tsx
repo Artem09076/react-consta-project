@@ -30,8 +30,8 @@ const NewsList = ({ data }: { data: NewsItem[]}) => {
         <div className='news-list-container'>
         <div className="news-list">
             {currentDate.map((item) => (
-                <div className='news-item'>
-                <News key={item.id} data={item} />
+                <div key={item.id} className='news-item'>
+                <News data={item} />
                 </div>
             ))}
         </div>

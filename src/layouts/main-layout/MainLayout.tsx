@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from "../../components/navbar/Navbar.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 
 const MainLayout = () => {
     return (
@@ -8,6 +9,7 @@ const MainLayout = () => {
             <main style={{ paddingTop: '80px' }}>
                 <Outlet />
             </main>
+            <Footer/>
         </div>
     )
 }

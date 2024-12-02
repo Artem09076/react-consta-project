@@ -30,7 +30,7 @@ const NewsList = ({ data }: { data: ServicesItem[]}) => {
         <div className='services-list'>
             <div className="news-list">
                 {currentDate.map((item) => (
-                    <div className='news-item'>
+                    <div className='news-item' key={item.id}>
                         <Service data={item}></Service>
                     </div>
                 ))}

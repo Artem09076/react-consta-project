@@ -1,5 +1,5 @@
 import {Button} from "@consta/uikit/Button";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import AppPage from "../../const.ts";
 import './Navbar.css'
 import {Layout} from "@consta/uikit/Layout";
@@ -15,7 +15,6 @@ const Navbar = () => {
     })
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
 
     return (
@@ -49,7 +48,7 @@ const Navbar = () => {
                                 label={'Выход'}
                                 className={"navbar-button"}
                                 onClick={() => {
-                                    navigate('')
+                                    window.history.back()
                                     dispatch(logout({
                                             id: null,
                                             accessToken: ''
