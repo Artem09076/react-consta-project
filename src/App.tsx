@@ -4,7 +4,6 @@ import { Theme, presetGpnDefault } from "@consta/uikit/Theme";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import ServicePage from "./pages/service-page/ServicePage.tsx";
 import ServiceDetailPage from "./pages/service-detail-page/ServiceDetailPage.tsx";
-import {Responses404} from "@consta/uikit/Responses404";
 import MainLayout from "./layouts/main-layout/MainLayout.tsx";
 import AppPage from "./const.ts";
 import MainPage from "./pages/main-page/MainPage.tsx";
@@ -12,6 +11,7 @@ import LoginPage from "./pages/login-page/LoginPage.tsx";
 import {Provider, useSelector} from "react-redux";
 import userStore, {RootState} from "./store/user-store/UserStore.tsx";
 import UserPage from "./pages/user-page/UserPage.tsx";
+import NotFoundPage from "./pages/not-found-page/NotFoundPage.tsx";
 
 
 const PrivateNoAuthRoute = ({ children } : {children: JSX.Element}) => {
@@ -36,7 +36,7 @@ const App = function() {
                         <Route path={AppPage.login} element={<PrivateAuthRoute><LoginPage/></PrivateAuthRoute>}></Route>
                         <Route path={AppPage.userinfo + ':id'} element={<PrivateNoAuthRoute><UserPage></UserPage></PrivateNoAuthRoute>}></Route>
                     </Route>
-                    <Route path='*' element={<Responses404/>}></Route>
+                    <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
                 </Routes>
             </BrowserRouter>
             </Provider>

@@ -1,4 +1,4 @@
-/* Основной контейнер списка новостей */
+
 .news-list-container {
     padding: 20px;
     max-width: 800px;
@@ -10,14 +10,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Контейнер для элементов новостей */
+
 .news-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Карточка новости */
 .news-item {
     padding: 15px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -25,7 +24,6 @@
 
 
 
-/* Заголовок новости */
 .news-item__title {
     margin: 0;
     font-size: 20px;
@@ -33,14 +31,12 @@
     word-wrap: break-word;
 }
 
-/* Дата создания новости */
 .news-item__date {
     margin: 5px 0 10px;
     font-size: 14px;
     color: #666;
 }
 
-/* Описание новости */
 .news-item__description {
     margin: 0;
     font-size: 16px;
@@ -49,14 +45,12 @@
     word-wrap: break-word;
 }
 
-/* Контейнер для пагинации */
 .news-pagination {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-/* Стили для кнопок пагинации (внутри Consta) */
 .pagination-button {
     display: inline-flex;
     justify-content: center;

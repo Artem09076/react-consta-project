@@ -1,4 +1,4 @@
-/* Контейнер карточки услуги */
+
 .service-card {
     display: flex;
     flex-direction: column;
@@ -17,7 +17,6 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Контейнер для изображения */
 .service-card__image-container {
     width: 100%;
     height: 150px;
@@ -26,14 +25,14 @@
     margin-bottom: 16px;
 }
 
-/* Изображение */
+
 .service-card__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Название услуги */
+
 .service-card__title {
     font-size: 18px;
     font-weight: bold;
@@ -42,7 +41,7 @@
     text-align: center;
 }
 
-/* Описание услуги */
+
 .service-card__description {
     font-size: 14px;
     color: #666;
