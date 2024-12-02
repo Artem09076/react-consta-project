@@ -20,6 +20,7 @@
 .news-item {
     padding: 15px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin: 0 auto;
 }
 
 
@@ -49,6 +50,7 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    background-color: #e8f4ff;
 }
 
 .pagination-button {
