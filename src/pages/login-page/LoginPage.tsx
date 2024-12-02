@@ -33,7 +33,7 @@ const LoginPage = () => {
                     headers: { 'Content-Type': 'application/json' },
                 }
             );
-            return response.data; // Успешный результат
+            return response.data;
 
     }
 
@@ -47,15 +47,14 @@ const LoginPage = () => {
 
 
         try {
-            // Проверка данных на сервере
+
             const userData = await validData(username, password);
 
-            // Если успешно, диспатчим данные пользователя
             dispatch(login({
-                ...userData,
+                id: userData.id,
+                accessToken: userData.accessToken,
             }));
 
-            // Редирект на главную страницу
             navigate('/');
         } catch (err) {
             if (axios.isAxiosError(err)) {
