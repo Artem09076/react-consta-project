@@ -20,10 +20,15 @@ const UserSplice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.id = action.payload.id;
             state.isAuthenticated = true;
+        },
+        logout: (state, action) => {
+            state.accessToken = action.payload.accessToken ;
+            state.id = action.payload.id;
+            state.isAuthenticated = false;
         }
     }
 })
 
 
-export const {login} = UserSplice.actions;
+export const {login, logout} = UserSplice.actions;
 export default UserSplice.reducer;
