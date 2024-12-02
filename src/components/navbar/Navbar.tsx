@@ -55,8 +55,6 @@ const Navbar = () => {
                                             accessToken: ''
                                         }
                                     ))
-
-
                                 }}
                             />
                         </>
