@@ -53,6 +53,7 @@ const LoginPage = () => {
             dispatch(login({
                 id: userData.id,
                 accessToken: userData.accessToken,
+                fullName: userData.firstName + ' ' + userData.lastName,
             }));
 
             navigate('/');

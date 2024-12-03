@@ -42,7 +42,7 @@ const Navbar = () => {
                     ) : (
                         <>
                             <NavLink to={AppPage.userinfo + user.id} className={"navbar-button"}>
-                                <Button label="Профиль"></Button>
+                                <Button label={user.fullName}></Button>
                             </NavLink>
                             <Button
                                 label={'Выход'}
